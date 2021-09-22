@@ -28,8 +28,6 @@ void printMatrix(int **matrix, int N) {
     }
 }
 
-
-
 void printArray(int *D, int N) {
     cout << "Our Array:" << endl;
     
