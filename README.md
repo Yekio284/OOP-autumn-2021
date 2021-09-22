@@ -1,2 +1,2 @@
 # OOP-autumn-2021
-codes for OOP lessons autumn 2021
+Lab works for OOP lessons. Autumn - winter of 2021
