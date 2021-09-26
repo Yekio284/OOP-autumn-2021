@@ -18,7 +18,7 @@ int **genRandMatrix(int N, int maxValue) {
     return matrix;
 }
 
-int *up_left_spiral(int **matrix, int *D, int N) {
+void up_left_spiral(int **matrix, int *D, int N) {
     int i, j, k;
     int limit = N / 2;
     int count = 0;
@@ -36,8 +36,6 @@ int *up_left_spiral(int **matrix, int *D, int N) {
 
     if (N % 2 != 0)
         D[count] = matrix[limit][limit];
-
-    return D;
 }
 
 void printMatrix(int **matrix, int N) {
@@ -65,7 +63,7 @@ int main() {
     int *D = new int[N * N];
     
     printMatrix(matrix, N);
-    D = up_left_spiral(matrix, D, N);
+    up_left_spiral(matrix, D, N);
     cout << "Up-left spiral:" << endl;
     printArray(D, N * N);
 
