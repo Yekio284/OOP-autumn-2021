@@ -38,7 +38,7 @@ void center_spiral(int **matrix, int *D, int N) {
     }
 }
 
-void up_left_spiral(int **matrix, int *D, int N) {
+void top_left_spiral(int **matrix, int *D, int N) {
     int i, j, k;
     int limit = N / 2;
     int count = 0;
@@ -85,7 +85,7 @@ int main() {
     printMatrix(matrix, N);
     
     cout << "Spiral, starting from the top left angle:" << endl;
-    up_left_spiral(matrix, D, N);
+    top_left_spiral(matrix, D, N);
     printArray(D, N * N);
 
     cout << "Spiral, starting from the center:" << endl;
