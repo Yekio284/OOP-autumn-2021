@@ -18,23 +18,43 @@ int **genRandMatrix(int N, int maxValue) {
     return matrix;
 }
 
+void center_spiral(int **matrix, int *D, int N) {
+    int i;
+    int a = (N - 1) / 2;
+    int b = a;
+    int limit = 0, count = 0;
+
+    while (limit <= N) {
+        limit++;
+        for (i = 0; (i < limit) && (b < N) && (b >= 0) && (a < N) && (a >= 0); i++)
+            D[count++] = matrix[a][b++];
+        for (i = 0; (i < limit) && (b < N) && (b >= 0) && (a < N) && (a >= 0); i++)
+            D[count++] = matrix[a++][b];
+        limit++;
+        for (i = 0; (i < limit) && (b < N) && (b >= 0) && (a < N) && (a >= 0); i++)
+            D[count++] = matrix[a][b--];
+        for (i = 0; (i < limit) && (b < N) && (b >= 0) && (a < N) && (a >= 0); i++)
+            D[count++] = matrix[a--][b];
+    }
+}
+
 void up_left_spiral(int **matrix, int *D, int N) {
     int i, j, k;
     int limit = N / 2;
     int count = 0;
 
-    for (k = 0; k < limit; k++) {
-        for (i = k; i < N - k; i++, count++)
+    for(k = 0; k < limit; k++) {
+        for(i = k; i < N - k; i++, count++)
             D[count] = matrix[i][k];
-        for (j = k + 1; j < N - k; j++, count++)
+        for(j = k + 1; j < N - k; j++, count++)
             D[count] = matrix[i - 1][j];
-        for (i = N - k - 2; i >= k; i--, count++) 
+        for(i = N - k - 2; i >= k; i--, count++) 
             D[count] = matrix[i][j - 1];
-        for (j = N - k - 2; j >= k + 1; j--, count++)
+        for(j = N - k - 2; j >= k + 1; j--, count++)
             D[count] = matrix[i + 1][j];
     }
 
-    if (N % 2 != 0)
+    if(N % 2 != 0)
         D[count] = matrix[limit][limit];
 }
 
@@ -63,13 +83,19 @@ int main() {
     int *D = new int[N * N];
     
     printMatrix(matrix, N);
+    
+    cout << "Spiral, starting from the top left angle:" << endl;
     up_left_spiral(matrix, D, N);
-    cout << "Up-left spiral:" << endl;
+    printArray(D, N * N);
+
+    cout << "Spiral, starting from the center:" << endl;
+    center_spiral(matrix, D, N);
     printArray(D, N * N);
 
     for(int i = 0; i < N; i++)
         delete[] matrix[i];
     delete[] matrix;
     delete[] D;
+    
     return 0;
 }
