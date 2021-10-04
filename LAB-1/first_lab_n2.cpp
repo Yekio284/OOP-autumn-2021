@@ -30,9 +30,8 @@ void printMatrix(int **matrix) {
     int i, j;
     for(i = 1; i <= matrix[0][0]; i++) {
         cout << matrix[i][0] << ": ";
-        for(j = 1; j <= matrix[i][0]; j++) {
+        for(j = 1; j <= matrix[i][0]; j++) 
             cout << setw(4) << matrix[i][j]; 
-        }
         cout << endl;
     }
 }
@@ -42,11 +41,12 @@ int main() {
     int size = rand() % 10;
     int maxValue = 100;
     int **matrix = genRandMatrix(size, maxValue);
+    
     printMatrix(matrix);
 
     for(int i = 0; i < size; i++)
         delete[] matrix[i];
-    
     delete[] matrix;
+    
     return 0;
 }
