@@ -18,9 +18,8 @@ int **genRandMatrix(int size, int maxValue) {
         matrix[i] = new int[k + 1];
         matrix[i][j] = k;
         
-        for(j = 1; j <= matrix[i][0]; j++) {
+        for(j = 1; j <= matrix[i][0]; j++)
             matrix[i][j] = rand() % maxValue;
-        }
     }
     return matrix;
 }
