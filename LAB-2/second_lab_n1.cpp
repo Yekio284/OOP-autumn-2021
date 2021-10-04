@@ -18,23 +18,74 @@ int **genRandMatrix(int N, int maxValue) {
     return matrix;
 }
 
+void right_diagonal(int **matrix, int *D, int N) {
+    int i, j;
+    int k = 0, g = 0;
+
+    for(i = N - 1; i >= 0; i--, g = 0) {
+        D[k] = matrix[g][i];
+        k++;
+        for(j = i + 1; j < N; j++) {
+            g++;
+            D[k] = matrix[g][j];
+            k++;
+        }
+    }
+
+    for(i = 1; i <= N - 1; i++, g = 0) {
+        D[k] = matrix[i][g];
+        k++;
+        for(j = i + 1; j < N; j++) {
+            g++;
+            D[k] = matrix[j][g];
+            k++;
+        }
+    }
+}
+
+void left_diagonal(int **matrix, int *D, int N) {
+    int i, j;
+    int k = 0, g = 0;
+
+    for(i = 0; i <= N - 1; i++, g = 0) {
+        D[k] = matrix[g][i];
+        k++;
+        for(j = N - i; j < N; j++) {
+            g++;
+            D[k] = matrix[g][N - j - 1];
+            k++;
+        }
+    }
+
+    for(i = 1; i <= N - 1; i++) {
+        g = N - 1;
+        D[k] = matrix[i][g];
+        k++;
+        for(j = i + 1; j < N; j++) {
+            g--;
+            D[k] = matrix[j][g];
+            k++;
+        }
+    }
+}
+
 void center_spiral(int **matrix, int *D, int N) {
     int i;
-    int a = (N - 1) / 2;
-    int b = a;
+    int k = (N - 1) / 2;
+    int g = k;
     int limit = 0, count = 0;
 
-    while (limit <= N) {
+    while(limit <= N) {
         limit++;
-        for (i = 0; (i < limit) && (b < N) && (b >= 0) && (a < N) && (a >= 0); i++)
-            D[count++] = matrix[a][b++];
-        for (i = 0; (i < limit) && (b < N) && (b >= 0) && (a < N) && (a >= 0); i++)
-            D[count++] = matrix[a++][b];
+        for(i = 0; (i < limit) && (g < N) && (g >= 0) && (k < N) && (k >= 0); i++)
+            D[count++] = matrix[k][g++];
+        for(i = 0; (i < limit) && (g < N) && (g >= 0) && (k < N) && (k >= 0); i++)
+            D[count++] = matrix[k++][g];
         limit++;
-        for (i = 0; (i < limit) && (b < N) && (b >= 0) && (a < N) && (a >= 0); i++)
-            D[count++] = matrix[a][b--];
-        for (i = 0; (i < limit) && (b < N) && (b >= 0) && (a < N) && (a >= 0); i++)
-            D[count++] = matrix[a--][b];
+        for(i = 0; (i < limit) && (g < N) && (g >= 0) && (k < N) && (k >= 0); i++)
+            D[count++] = matrix[k][g--];
+        for(i = 0; (i < limit) && (g < N) && (g >= 0) && (k < N) && (k >= 0); i++)
+            D[count++] = matrix[k--][g];
     }
 }
 
@@ -83,6 +134,14 @@ int main() {
     int *D = new int[N * N];
     
     printMatrix(matrix, N);
+    
+    cout << "Right diagonal:" << endl;
+    right_diagonal(matrix, D, N);
+    printArray(D, N * N);
+
+    cout << "Left diagonal:" << endl;
+    left_diagonal(matrix, D, N);
+    printArray(D, N * N);
     
     cout << "Spiral, starting from the top left angle:" << endl;
     top_left_spiral(matrix, D, N);
