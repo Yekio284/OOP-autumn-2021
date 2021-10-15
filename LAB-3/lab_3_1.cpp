@@ -62,5 +62,6 @@ int main() {
 		// Display the window
 		window.display();
 	}
+
 	return 0;
 }
