@@ -4,7 +4,6 @@ class tPoint {
 private:
 	int x_speed = 1, y_speed = 1;
 	int x_coordinate, y_coordinate, color_red, color_green, color_blue;
-
 public:
 	void set_x_coordinate(int x) {
 		x_coordinate = x;
