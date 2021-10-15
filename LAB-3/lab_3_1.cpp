@@ -10,16 +10,16 @@ private:
 	int x_coordinate, y_coordinate, color_red, color_green, color_blue;
 
 public:
-	void set_x(int x) {
+	void set_x_coordinate(int x) {
 		x_coordinate = x;
 	}
-	void set_y(int y) {
+	void set_y_coordinate(int y) {
 		y_coordinate = y;
 	}
-	int get_x() {
+	int get_x_coordinate() {
 		return x_coordinate;
 	}
-	int get_y() {
+	int get_y_coordinate() {
 		return y_coordinate;
 	}
 	void set_color_red(int red) {
@@ -83,38 +83,39 @@ public:
 int main() {
 	srand(time(NULL));
 	
-	int user_choose, i;
-	cout << "What do you want to see: linear move or random move? (1/2): ";
-	cin >> user_choose;
-
 	tPoint arr_of_points[100];
+	int i;
 
 	for (i = 0; i < 100; i++) {
-		arr_of_points[i].set_x(rand() % 1910);
-		arr_of_points[i].set_y(rand() % 1070);
+		arr_of_points[i].set_x_coordinate(rand() % 1910);
+		arr_of_points[i].set_y_coordinate(rand() % 1070);
 		arr_of_points[i].set_color_red(rand() % 255);
 		arr_of_points[i].set_color_green(rand() % 255);
 		arr_of_points[i].set_color_blue(rand() % 255);
 	}
 
+	int user_choose;
+	cout << "What do you want to see: linear move or random move? (1/2): ";
+	cin >> user_choose;
+	
 	RenderWindow window(VideoMode(1920, 1080), "LAB-3");
-
-	// Главный цикл приложения. Выполняется, пока открыто окно
+	
+	// Main loop of app. Performed while window is open.
 	while (window.isOpen()) {
-		// Обрабатываем очередь событий в цикле
+		// Processing the event queue in a loop
 		Event event;
 		while (window.pollEvent(event)) {
-			// Пользователь нажал на «крестик» и хочет закрыть окно?
+			// User wants to close the window?
 			if (event.type == Event::Closed)
-				// тогда закрываем его
+				// then close it
 				window.close();
 		}
-		// Цвет окна
+		// The color of window
 		window.clear(Color(0, 0, 0, 0));
 
 		for (i = 0; i < 100; i++) {
 			CircleShape circle(10.f);
-			circle.setPosition(arr_of_points[i].get_x(), arr_of_points[i].get_y());
+			circle.setPosition(arr_of_points[i].get_x_coordinate(), arr_of_points[i].get_y_coordinate());
 			circle.setFillColor(Color(arr_of_points[i].get_color_red(), arr_of_points[i].get_color_green(), arr_of_points[i].get_color_blue()));
 
 			switch (user_choose) {
@@ -127,15 +128,13 @@ int main() {
 				arr_of_points[i].randommove_y();
 				break;
 			default:
-				cout << "Incorrect input.";
+				cout << "Incorrect input.\n";
 				return 1;
 			}
-
+			// Drawing our point
 			window.draw(circle);
 		}
-
-
-		// Отрисовка окна
+		// Display the window
 		window.display();
 	}
 
