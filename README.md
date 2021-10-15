@@ -1,2 +1,2 @@
-# OOP-third-semester-2021
+# OOP-autumn-2021
 Lab works for OOP lessons. Third semester.
