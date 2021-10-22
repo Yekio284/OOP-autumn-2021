@@ -59,34 +59,6 @@ public:
 		if (y_coordinate < 0 || y_coordinate > 1070)
 			y_speed = y_speed * -1;
 	}
-	void randommove_x() {
-		int variant_to_go = 1 + rand() % 2; // [1;2]
-
-		if (x_coordinate < 0)
-			x_coordinate = x_coordinate + x_speed * 2;
-		else if (x_coordinate > 1910)
-			x_coordinate = x_coordinate - x_speed * 2;
-		else {
-			if (variant_to_go == 1)
-				x_coordinate = x_coordinate + x_speed * 2;
-			else
-				x_coordinate = x_coordinate + x_speed * -2;
-		}
-	}
-	void randommove_y() {
-		int variant_to_go = 1 + rand() % 2; // [1;2]
-
-		if (y_coordinate < 0)
-			y_coordinate = y_coordinate + y_speed * 2;
-		else if (y_coordinate > 1070)
-			y_coordinate = y_coordinate - y_speed * 2;
-		else {
-			if (variant_to_go == 1)
-				y_coordinate = y_coordinate + y_speed * 2;
-			else
-				y_coordinate = y_coordinate + y_speed * -2;
-		}
-	}
 	~tPoint() {
 		cout << "Destructor tPoint\n";
 	}
