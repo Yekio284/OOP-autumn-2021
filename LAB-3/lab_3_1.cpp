@@ -22,7 +22,7 @@ int main() {
 	int user_choose;
 	cout << "What do you want to see: linear move or random move? (1/2): ";
 	cin >> user_choose;
-	
+
 	RenderWindow window(VideoMode(1920, 1080), "LAB-3");
 	
 	// Main loop of app. Performed while window is open.
