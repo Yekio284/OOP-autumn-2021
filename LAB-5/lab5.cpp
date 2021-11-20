@@ -28,7 +28,7 @@ int main() {
 	array_of_figures[6] = new Rhombus;
 
 
-	RenderWindow window(VideoMode(1920, 1080), "LAB-4");
+	RenderWindow window(VideoMode(1920, 1080), "LAB-5");
 
 
 	float rotation = 0;
