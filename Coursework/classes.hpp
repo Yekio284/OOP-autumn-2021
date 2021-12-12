@@ -58,7 +58,7 @@ class HighSchool : public EducationalInstitution {
         }
 };
 
-class SecondaryVocational: public EducationalInstitution {
+class SecondaryVocational : public EducationalInstitution {
     private:
         string college_name;
         int num_of_students, num_of_faculties, num_of_departments;
