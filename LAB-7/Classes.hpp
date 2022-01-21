@@ -2,16 +2,14 @@
 
 using namespace std;
 
-struct Node
-{
+struct Node {
     string value;
     Node *next;
 
     Node(string val) : value(val), next(nullptr) {}
 };
 
-struct Stack_element
-{
+struct Stack_element {
     int digit;
     Stack_element *prev;
 };
