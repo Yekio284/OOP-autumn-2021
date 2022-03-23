@@ -3,8 +3,7 @@
 
 using namespace std;
 
-int main()
-{
+int main() {
     List list(nullptr, nullptr);
     cout << list.is_empty() << endl;
     list.push_back("a");
